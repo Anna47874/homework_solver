@@ -9,8 +9,9 @@ from telegram.ext import (
     filters,
 )
 from model import get_solution
+from decouple import config
 
-TOKEN = "8430042770:AAE_ZpG-QT_ltHD75r33Zh-WQG1i2aaSEws"
+TOKEN = config("TOKEN")
 
 
 
