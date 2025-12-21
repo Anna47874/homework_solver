@@ -1,6 +1,8 @@
 from google import genai
 from google.genai import types
+from decouple import config
 
+TOKEN=config("GEMINI")
 
 def get_solution(sub) -> str:
     try:
@@ -23,8 +25,8 @@ def get_solution(sub) -> str:
     elif sub == "Хімія":
         user_request = "Виріши мені задачу з хімії. Оформи рішення максимально стисло ."
     elif sub == "Фізика":
-        user_request = "Виріши мені задачу з фізики. Оформи рішення максимально стисло за правилами оформлення з фізики, якщо це потрібно."
-    client = genai.Client(api_key="AIzaSyChrnM-PIxEF5Iw5Akm26QisPVBsB4lHiE")
+        user_request = "Виріши мені задачу з фізики. Оформи рішення максимально стисло за правилами оформлення з фізики, якщо це потрібно.Якщо потрібні формули зкроби щоб вони нормально відображалися в текстовому форматі(коли дивлюся в браузері вони нормальні  коли копіюю текстовий файл вони вигляда як набір слешів.)"
+    client = genai.Client(api_key=TOKEN)
     response = client.models.generate_content(
         model="gemini-2.5-flash", 
         contents = [
